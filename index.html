@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michi - Dev</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Estilos para el enlace de navegación activo en modo claro */
+        .nav-link.active {
+            border-bottom: 2px solid #7c3aec;
+        }
+
+        /* Estilos para el enlace de navegación activo en modo oscuro */
+        .dark .nav-link.active {
+            border-bottom: 2px solid #7c3aec;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 text-gray-800 dark:bg-gray-950 dark:text-white min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <header class="sticky top-0 bg-white dark:bg-gray-950 z-50 shadow-md">
+        <nav class="max-w-7xl mx-auto p-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-violet-600 dark:text-violet-600">Michel Díaz</h1>
+            <div class="space-x-4 md:space-x-8">
+                <a href="#inicio" class="nav-link text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-300">Inicio</a>
+                <a href="#acerca-de" class="nav-link text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-300">Acerca de</a>
+                <a href="#proyectos" class="nav-link text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-300">Proyectos</a>
+                <a href="#contacto" class="nav-link text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-300">Contacto</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Contenedor principal de secciones -->
+    <main class="flex-grow">
+
+        <!-- Sección de Inicio -->
+        <section id="inicio" class="min-h-[calc(100vh-6rem)] flex items-center justify-center p-4 text-center">
+            <div class="max-w-3xl">                
+                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 animate-fadeIn text-gray-900 dark:text-white">Hola, soy <span class="text-violet-600 dark:text-violet-600">Michel Díaz</span></h2>
+                <p class="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 animate-fadeIn delay-200">
+                    Soy desarrolladora web con experiencia en backend, bases de datos y APIs RESTful, apasionada por construir aplicaciones dinámicas, escalables y centradas en el usuario.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#proyectos" class="bg-violet-600 dark:bg-violet-600 hover:bg-violet-700 dark:hover:bg-violet-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 animate-slideIn">Ver Proyectos</a>
+                    <a href="#contacto" class="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 font-bold py-3 px-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 animate-slideIn delay-200">Contactar</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Acerca de Mí -->
+        <section id="acerca-de" class="py-16 md:py-24 bg-gray-200 dark:bg-gray-900">
+            <div class="max-w-4xl mx-auto p-4 text-center">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8">Acerca de Mí</h2>
+                <div class="bg-white dark:bg-gray-950 p-6 rounded-xl shadow-lg border border-gray-300 dark:border-gray-700">
+                    <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                        Soy Michel Díaz, desarrolladora de software especializada en backend y bases de datos. Me dedico a crear soluciones eficientes, seguras y escalables para aplicaciones web y sistemas empresariales. He trabajado en proyectos completos, desde el análisis de requerimientos hasta la implementación y soporte, colaborando con equipos multidisciplinarios.
+                    </p>
+                    <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                        Utilizo frameworks como Spring Boot y .NET, así como sistemas de gestión de bases de datos como SQL Server, Oracle y Sybase en diferentes proyectos. También trabajo con Docker y desarrollo APIs RESTful, lo que me permite abordar proyectos de manera integral. Me apasiona construir aplicaciones dinámicas y centradas en el usuario, aplicando metodologías ágiles y buenas prácticas de desarrollo.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Proyectos -->
+        <section id="proyectos" class="py-16 md:py-24">
+            <div class="max-w-7xl mx-auto p-4 text-center">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8">Mis Proyectos</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Proyecto 1 -->
+                    <div class="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-2xl">
+                        <img src="https://placehold.co/600x400/7c3aec/FFFFFF?text=Proyecto+1" alt="Imagen de Proyecto 1" class="w-full h-48 object-cover dark:hidden">
+                        <img src="https://placehold.co/600x400/7c3aec/FFFFFF?text=Proyecto+1" alt="Imagen de Proyecto 1" class="w-full h-48 object-cover hidden dark:block">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Pago P2P con NFC</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">Desarrollé el backend en SQL Server para incorporar pagos sin contacto vía NFC en el sistema P2P, posicionando a Bancaribe como uno de los primeros bancos en Venezuela en implementar esta tecnología.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-violet-500 dark:bg-violet-500 text-white text-xs font-semibold px-2.5 py-0.5 rounded-full">SQL Server</span>
+                                <span class="bg-yellow-500 text-gray-900 text-xs font-semibold px-2.5 py-0.5 rounded-full">SOAP Services</span>
+                            </div>
+                            <div class="flex justify-between items-center mt-4">
+                                <a href="#" target="_blank" class="text-violet-600 dark:text-violet-600 hover:text-violet-500 dark:hover:text-violet-300 font-semibold transition-colors">🔒 Código privado por políticas de la empresa</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Proyecto 2 -->
+                    <div class="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-2xl">
+                        <img src="https://placehold.co/600x400/7c3aec/FFFFFF?text=Proyecto+2" alt="Imagen de Proyecto 2" class="w-full h-48 object-cover dark:hidden">
+                        <img src="https://placehold.co/600x400/7c3aec/FFFFFF?text=Proyecto+2" alt="Imagen de Proyecto 2" class="w-full h-48 object-cover hidden dark:block">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Nombre del Proyecto 2</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">Descripción del segundo proyecto. Podría ser un juego web simple o una API.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-purple-500 text-white text-xs font-semibold px-2.5 py-0.5 rounded-full">Python</span>
+                                <span class="bg-teal-500 text-white text-xs font-semibold px-2.5 py-0.5 rounded-full">Flask</span>
+                            </div>
+                            <div class="flex justify-between items-center mt-4">
+                                <a href="#" target="_blank" class="text-violet-600 dark:text-violet-600 hover:text-violet-500 dark:hover:text-violet-600 font-semibold transition-colors">Ver Demo</a>
+                                <a href="#" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">Ver Código</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- .... -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Contacto -->
+        <section id="contacto" class="py-16 md:py-24 bg-gray-200 dark:bg-gray-900">
+            <div class="max-w-xl mx-auto p-4 text-center">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8">Contáctame</h2>
+                <div class="bg-white dark:bg-gray-950 p-6 rounded-xl shadow-lg border border-gray-300 dark:border-gray-700">
+                    <p class="text-lg text-gray-600 dark:text-gray-300 mb-4">Estoy disponible para nuevos proyectos y oportunidades. ¡No dudes en escribirme!</p>
+                    <a href="mailto:michel.diazcab.com" class="inline-block bg-violet-600 dark:bg-violet-600 hover:bg-violet-700 dark:hover:bg-violet-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-transform transform hover:scale-105">
+                        Enviar Correo
+                    </a>
+                    <div class="flex justify-center items-center gap-6 mt-6">
+                        <a href="https://github.com/tu-usuario" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+                            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                                <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.418 2.863 8.163 6.818 9.504.499.09.679-.217.679-.481 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.002.071 1.529 1.032 1.529 1.032.891 1.529 2.341 1.089 2.913.834.091-.647.351-1.089.636-1.338-2.22-.253-4.555-1.113-4.555-4.949 0-1.092.39-1.983 1.029-2.684-.103-.253-.446-1.272.098-2.646 0 0 .84-.268 2.75 1.022A9.684 9.684 0 0112 6.843c.85.004 1.702.115 2.503.334 1.909-1.29 2.747-1.022 2.747-1.022.546 1.374.202 2.393.099 2.646.64.701 1.028 1.592 1.028 2.684 0 3.844-2.339 4.69-4.566 4.933.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .264.18.573.682.475C19.13 20.198 22 16.443 22 12.017 22 6.484 17.523 2 12 2z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/michelledicabrera/" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+                            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.783 1.75-1.75 1.75zm13.5 11.268h-3v-5.604c0-1.337-.026-3.065-1.868-3.065-1.868 0-2.154 1.459-2.154 2.967v5.702h-3v-10h2.881v1.367h.041c.401-.761 1.381-1.562 2.841-1.562 3.039 0 3.6 2.001 3.6 4.601v5.594z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white dark:bg-gray-950 text-gray-500 py-6 text-center">
+        <p>&copy; 2025 Michel Díaz. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Script para navegación suave y highlighting -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('section[id]');
+            const html = document.documentElement;
+
+            // detecta la preferencia del usuario y añade la clase 'dark' si el modo oscuro está activado
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                html.classList.add('dark');
+            } else {
+                html.classList.remove('dark');
+            }
+
+            // Listener para el scroll
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= sectionTop - sectionHeight / 3) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.href.includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Navegación suave
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        window.scrollTo({
+                            top: targetSection.offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
