@@ -1,0 +1,42 @@
+# Publica el sitio en GitHub Pages cada vez que se suben cambios a "main".
+# Si hay un enlace roto, la publicación se detiene y el sitio anterior sigue en línea.
+name: Publicar en GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  # Permite lanzarlo a mano desde la pestaña "Actions" de GitHub
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Si llegan dos publicaciones seguidas, no se cancela la que está en curso
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v7
+
+      - name: Compilar, comprobar enlaces y preparar el sitio
+        uses: withastro/action@v6
+        with:
+          build-cmd: npm run build && npm run check:links
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publicar en GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
