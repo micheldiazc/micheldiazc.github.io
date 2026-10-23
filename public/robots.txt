@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://micheldiazc.github.io/sitemap-index.xml
