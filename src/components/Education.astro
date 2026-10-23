@@ -1,0 +1,105 @@
+---
+import Section from './Section.astro';
+import { getDictionary, type Lang } from '../i18n/utils';
+
+interface Props {
+	lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = getDictionary(lang);
+---
+
+<Section id="education" index="05" title={t.education.title}>
+	<div class="education">
+		<ul class="degrees">
+			{
+				t.education.degrees.map((degree) => (
+					<li>
+						<h3>{degree.title}</h3>
+						<p class="institution">{degree.institution}</p>
+						<p class="period mono">{degree.period}</p>
+					</li>
+				))
+			}
+		</ul>
+
+		<div>
+			<h3 class="courses-title mono">{t.education.coursesTitle}</h3>
+			<ul class="courses">
+				{
+					t.education.courses.map((course) => (
+						<li>
+							<span>{course.name}</span>
+							<span class="mono">
+								{course.provider} · {course.year}
+							</span>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</div>
+</Section>
+
+<style>
+	.education {
+		display: grid;
+		gap: var(--space-lg);
+		max-width: 46rem;
+	}
+
+	ul {
+		padding: 0;
+		list-style: none;
+	}
+
+	.degrees {
+		display: grid;
+		gap: var(--space-md);
+	}
+
+	.degrees h3 {
+		font-size: 1.25rem;
+	}
+
+	.institution {
+		color: var(--color-text-muted);
+	}
+
+	.period {
+		color: var(--color-text-muted);
+	}
+
+	.courses-title {
+		margin-bottom: var(--space-sm);
+		color: var(--color-accent);
+		font-family: var(--font-mono);
+		font-weight: 400;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+
+	.courses li {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		gap: 0.25rem 1rem;
+		padding-block: 0.75rem;
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.courses li:first-child {
+		border-top: 1px solid var(--color-border);
+	}
+
+	.courses .mono {
+		color: var(--color-text-muted);
+	}
+
+	@media (min-width: 48rem) {
+		.degrees {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+</style>

@@ -1,0 +1,67 @@
+---
+// GitHub Pages muestra esta página para cualquier dirección que no exista,
+// sin saber el idioma; por eso enseña ambos.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import NodeLine from '../components/NodeLine.astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { getDictionary } from '../i18n/utils';
+
+const es = getDictionary('es');
+const en = getDictionary('en');
+---
+
+<BaseLayout lang="es" title={`404 · ${es.notFound.title}`} noindex>
+	<section class="not-found">
+		<div class="container inner">
+			<p class="code mono">404</p>
+			<div class="motif">
+				<NodeLine nodes={3} active={0} />
+			</div>
+			<h1>{es.notFound.title}</h1>
+			<p class="en" lang="en">{en.notFound.title}</p>
+			<div class="links">
+				<a href={getRelativeLocaleUrl('es', '/')}>{es.notFound.back}</a>
+				<a href={getRelativeLocaleUrl('en', '/')} lang="en">{en.notFound.back}</a>
+			</div>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.inner {
+		display: grid;
+		gap: var(--space-sm);
+		justify-items: start;
+		min-height: calc(80vh - var(--header-height));
+		align-content: center;
+		padding-block: var(--space-xl);
+	}
+
+	.code {
+		color: var(--color-accent);
+		letter-spacing: 0.12em;
+	}
+
+	/* La conexión se corta: solo el primer nodo está activo */
+	.motif {
+		width: 100%;
+		max-width: 14rem;
+		margin-bottom: var(--space-sm);
+	}
+
+	h1 {
+		font-size: clamp(2rem, 6vw, 3.5rem);
+	}
+
+	.en {
+		color: var(--color-text-muted);
+		font-size: 1.25rem;
+	}
+
+	.links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-md);
+		margin-top: var(--space-md);
+	}
+</style>

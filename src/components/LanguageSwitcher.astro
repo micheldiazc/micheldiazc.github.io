@@ -4,14 +4,16 @@ import { getDictionary, otherLang, pathWithoutLang, type Lang } from '../i18n/ut
 
 interface Props {
 	lang: Lang;
+	// Ruta destino si la página no tiene equivalente en el otro idioma (p. ej. la 404)
+	path?: string;
 }
 
-const { lang } = Astro.props;
+const { lang, path } = Astro.props;
 const t = getDictionary(lang);
 const target = otherLang(lang);
 
 // Enlace a la misma página en el otro idioma (funciona sin JavaScript)
-const href = getRelativeLocaleUrl(target, pathWithoutLang(Astro.url.pathname));
+const href = getRelativeLocaleUrl(target, path ?? pathWithoutLang(Astro.url.pathname));
 ---
 
 <nav class="switcher mono" aria-label={t.language.label}>

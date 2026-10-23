@@ -5,9 +5,10 @@ import { getDictionary, type Lang } from '../i18n/utils';
 
 interface Props {
 	lang: Lang;
+	switcherPath?: string;
 }
 
-const { lang } = Astro.props;
+const { lang, switcherPath } = Astro.props;
 const t = getDictionary(lang);
 const home = getRelativeLocaleUrl(lang, '/');
 
@@ -41,7 +42,7 @@ const links = [
 			</ul>
 		</nav>
 
-		<LanguageSwitcher lang={lang} />
+		<LanguageSwitcher lang={lang} path={switcherPath} />
 	</div>
 </header>
 

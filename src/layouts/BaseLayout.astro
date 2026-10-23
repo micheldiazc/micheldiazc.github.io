@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 import { getAbsoluteLocaleUrl } from 'astro:i18n';
 import { getDictionary, languages, pathWithoutLang, type Lang } from '../i18n/utils';
 
@@ -8,9 +9,13 @@ interface Props {
 	lang: Lang;
 	title?: string;
 	description?: string;
+	// Páginas que no deben aparecer en buscadores (p. ej. la 404)
+	noindex?: boolean;
 }
 
-const { lang } = Astro.props;
+const { lang, noindex = false } = Astro.props;
+// Sin equivalente en otro idioma, el selector lleva al inicio
+const switcherPath = noindex ? '/' : undefined;
 const t = getDictionary(lang);
 const title = Astro.props.title ?? t.meta.title;
 const description = Astro.props.description ?? t.meta.description;
@@ -29,9 +34,19 @@ const canonical = getAbsoluteLocaleUrl(lang, path);
 		<script is:inline>document.documentElement.classList.add('js');</script>
 		<title>{title}</title>
 		<meta name="description" content={description} />
-		<link rel="canonical" href={canonical} />
-		{languages.map((l) => <link rel="alternate" hreflang={l} href={getAbsoluteLocaleUrl(l, path)} />)}
-		<link rel="alternate" hreflang="x-default" href={getAbsoluteLocaleUrl('es', path)} />
+		{
+			noindex ? (
+				<meta name="robots" content="noindex" />
+			) : (
+				<>
+					<link rel="canonical" href={canonical} />
+					{languages.map((l) => (
+						<link rel="alternate" hreflang={l} href={getAbsoluteLocaleUrl(l, path)} />
+					))}
+					<link rel="alternate" hreflang="x-default" href={getAbsoluteLocaleUrl('es', path)} />
+				</>
+			)
+		}
 
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content={title} />
@@ -46,10 +61,11 @@ const canonical = getAbsoluteLocaleUrl(lang, path);
 	</head>
 	<body>
 		<a class="skip-link" href="#contenido">{t.a11y.skipToContent}</a>
-		<Header lang={lang} />
+		<Header lang={lang} switcherPath={switcherPath} />
 		<main id="contenido">
 			<slot />
 		</main>
+		<Footer lang={lang} />
 
 		<script>
 			// Muestra cada sección .reveal la primera vez que entra en pantalla

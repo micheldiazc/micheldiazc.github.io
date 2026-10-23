@@ -1,0 +1,101 @@
+---
+import NodeLine from './NodeLine.astro';
+import { getDictionary, type Lang } from '../i18n/utils';
+import { profile } from '../data/profile';
+
+interface Props {
+	lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = getDictionary(lang);
+---
+
+<section id="contact" class="contact reveal" aria-labelledby="contact-title">
+	<div class="container contact-inner">
+		<p class="label mono"><span aria-hidden="true">06</span> {t.contact.title}</p>
+		<h2 id="contact-title">{t.contact.headline}</h2>
+		<p class="text">{t.contact.text}</p>
+
+		<div class="actions">
+			<a class="email" href={`mailto:${profile.email}`}>{profile.email}</a>
+			<a class="linkedin mono" href={profile.linkedin} target="_blank" rel="noopener noreferrer">
+				{t.contact.linkedin} <span aria-hidden="true">↗</span>
+			</a>
+		</div>
+
+		<div class="motif">
+			<NodeLine nodes={5} active={4} />
+		</div>
+	</div>
+</section>
+
+<style>
+	.contact {
+		padding-block: var(--space-xl);
+	}
+
+	.contact-inner {
+		display: grid;
+		gap: var(--space-md);
+		justify-items: start;
+	}
+
+	.label {
+		color: var(--color-accent);
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+	}
+
+	h2 {
+		max-width: 18ch;
+		font-size: clamp(2.25rem, 6vw, 4rem);
+		letter-spacing: -0.03em;
+	}
+
+	.text {
+		color: var(--color-text-muted);
+		font-size: 1.125rem;
+	}
+
+	.actions {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: var(--space-sm) var(--space-md);
+		margin-top: var(--space-sm);
+	}
+
+	/* El correo visible y grande: se puede copiar aunque no haya cliente de correo */
+	.email {
+		font-family: var(--font-display);
+		font-size: clamp(1.125rem, 3.5vw, 1.625rem);
+		color: var(--color-text);
+		text-decoration: underline;
+		text-decoration-color: var(--color-accent);
+		text-decoration-thickness: 2px;
+		text-underline-offset: 0.3em;
+		overflow-wrap: anywhere;
+		transition: color 0.2s var(--ease);
+	}
+
+	.email:hover {
+		color: var(--color-accent);
+	}
+
+	.linkedin {
+		color: var(--color-text-muted);
+		text-decoration: none;
+		padding-block: 0.5rem;
+	}
+
+	.linkedin:hover {
+		color: var(--color-accent);
+	}
+
+	.motif {
+		width: 100%;
+		max-width: 28rem;
+		margin-top: var(--space-lg);
+	}
+</style>
