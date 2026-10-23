@@ -50,6 +50,22 @@ const canonical = getAbsoluteLocaleUrl(lang, path);
 		<main id="contenido">
 			<slot />
 		</main>
+
+		<script>
+			// Muestra cada sección .reveal la primera vez que entra en pantalla
+			const observer = new IntersectionObserver(
+				(entries) => {
+					for (const entry of entries) {
+						if (entry.isIntersecting) {
+							entry.target.classList.add('is-visible');
+							observer.unobserve(entry.target);
+						}
+					}
+				},
+				{ rootMargin: '0px 0px -10% 0px' },
+			);
+			document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+		</script>
 	</body>
 </html>
 

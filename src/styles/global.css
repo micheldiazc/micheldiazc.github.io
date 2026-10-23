@@ -132,6 +132,20 @@ svg {
 	white-space: nowrap;
 }
 
+/* Aparición suave de las secciones al llegar a ellas (solo con JavaScript) */
+.js .reveal {
+	opacity: 0;
+	transform: translateY(1rem);
+	transition:
+		opacity 0.6s var(--ease),
+		transform 0.6s var(--ease);
+}
+
+.js .reveal.is-visible {
+	opacity: 1;
+	transform: none;
+}
+
 /* Si el dispositivo pide reducir el movimiento, se desactivan transiciones */
 @media (prefers-reduced-motion: reduce) {
 	*,

@@ -1,0 +1,40 @@
+---
+import Section from './Section.astro';
+import { getDictionary, type Lang } from '../i18n/utils';
+
+interface Props {
+	lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = getDictionary(lang);
+---
+
+<Section id="about" index="01" title={t.about.title}>
+	<div class="about">
+		{t.about.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+		<p class="languages mono">{t.about.languages}</p>
+	</div>
+</Section>
+
+<style>
+	.about {
+		display: grid;
+		gap: var(--space-md);
+		max-width: 42rem;
+	}
+
+	.about p:first-child {
+		font-size: 1.1875rem;
+		color: var(--color-text);
+	}
+
+	.about p {
+		color: var(--color-text-muted);
+	}
+
+	.languages {
+		padding-top: var(--space-sm);
+		border-top: 1px solid var(--color-border);
+	}
+</style>

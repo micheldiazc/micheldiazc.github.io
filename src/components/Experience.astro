@@ -1,0 +1,153 @@
+---
+import Section from './Section.astro';
+import { getDictionary, type Lang } from '../i18n/utils';
+import { techTags } from '../data/profile';
+
+interface Props {
+	lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = getDictionary(lang);
+const { bancaribe, sigis } = t.experience;
+
+// Orden cronológico inverso; "current" pinta el nodo relleno
+const jobs = [
+	{ ...bancaribe, current: true, summary: undefined, tags: techTags.bancaribe },
+	{ ...sigis, current: false, highlightTitle: undefined, highlightText: undefined },
+];
+---
+
+<Section id="experience" index="02" title={t.experience.title}>
+	<ol class="timeline">
+		{
+			jobs.map((job) => (
+				<li class:list={['job', { current: job.current }]}>
+					<span class="node" aria-hidden="true" />
+					<div class="job-head">
+						<h3>{job.company}</h3>
+						<p class="role">{job.role}</p>
+						<p class="meta mono">
+							{job.period} · {job.location}
+						</p>
+					</div>
+
+					{job.summary && <p class="summary">{job.summary}</p>}
+
+					{job.highlightTitle && (
+						<p class="highlight">
+							<strong>{job.highlightTitle}</strong> {job.highlightText}
+						</p>
+					)}
+
+					<ul class="bullets">
+						{job.bullets.map((bullet) => (
+							<li>{bullet}</li>
+						))}
+					</ul>
+
+					<p class="tags mono">{job.tags.join(' · ')}</p>
+				</li>
+			))
+		}
+	</ol>
+</Section>
+
+<style>
+	.timeline {
+		list-style: none;
+		padding: 0;
+		max-width: 46rem;
+	}
+
+	/* La línea vertical que une los nodos */
+	.job {
+		position: relative;
+		padding-left: 2rem;
+		padding-bottom: var(--space-lg);
+		border-left: 1px solid color-mix(in srgb, var(--color-accent) 40%, var(--color-border));
+	}
+
+	.job:last-child {
+		padding-bottom: 0;
+		border-left-color: transparent;
+	}
+
+	.node {
+		position: absolute;
+		top: 0.45rem;
+		left: calc(-0.3125rem - 0.5px);
+		width: 0.625rem;
+		height: 0.625rem;
+		border-radius: 50%;
+		background: var(--color-bg);
+		border: 1.5px solid var(--color-accent);
+	}
+
+	.current .node {
+		background: var(--color-accent);
+		box-shadow: 0 0 0 4px var(--color-accent-soft);
+	}
+
+	.job-head {
+		display: grid;
+		gap: 0.25rem;
+		margin-bottom: var(--space-sm);
+	}
+
+	h3 {
+		font-size: 1.375rem;
+	}
+
+	.role {
+		color: var(--color-text);
+		font-weight: 500;
+	}
+
+	.meta {
+		color: var(--color-text-muted);
+	}
+
+	.summary {
+		color: var(--color-text-muted);
+		margin-bottom: var(--space-sm);
+	}
+
+	.highlight {
+		margin-bottom: var(--space-md);
+		padding: var(--space-sm) var(--space-md);
+		background: var(--color-surface);
+		border-left: 2px solid var(--color-accent);
+	}
+
+	.highlight strong {
+		color: var(--color-accent);
+		font-weight: 500;
+	}
+
+	.bullets {
+		display: grid;
+		gap: 0.6rem;
+		padding: 0;
+		list-style: none;
+		color: var(--color-text-muted);
+	}
+
+	.bullets li {
+		position: relative;
+		padding-left: 1.25rem;
+	}
+
+	.bullets li::before {
+		content: '—';
+		position: absolute;
+		left: 0;
+		color: var(--color-border);
+	}
+
+	.tags {
+		margin-top: var(--space-md);
+		color: var(--color-accent);
+		line-height: 1.8;
+	}
+</style>

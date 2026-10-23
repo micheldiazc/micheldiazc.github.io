@@ -1,0 +1,68 @@
+---
+// Estructura común de cada sección: número, título y contenido.
+// En pantallas grandes el título va en una columna a la izquierda.
+interface Props {
+	id: string;
+	index: string;
+	title: string;
+}
+
+const { id, index, title } = Astro.props;
+---
+
+<section id={id} class="section reveal" aria-labelledby={`${id}-title`}>
+	<div class="container section-inner">
+		<header class="section-head">
+			<span class="index mono" aria-hidden="true">{index}</span>
+			<h2 id={`${id}-title`}>{title}</h2>
+		</header>
+		<div class="section-body">
+			<slot />
+		</div>
+	</div>
+</section>
+
+<style>
+	.section {
+		padding-block: var(--space-xl);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.section-inner {
+		display: grid;
+		gap: var(--space-md);
+	}
+
+	.section-head {
+		display: flex;
+		align-items: baseline;
+		gap: 0.75rem;
+	}
+
+	.index {
+		color: var(--color-accent);
+	}
+
+	h2 {
+		font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+	}
+
+	.section-body {
+		min-width: 0;
+	}
+
+	@media (min-width: 60rem) {
+		.section-inner {
+			grid-template-columns: 16rem 1fr;
+			gap: var(--space-lg);
+		}
+
+		.section-head {
+			flex-direction: column;
+			gap: var(--space-xs);
+			position: sticky;
+			top: calc(var(--header-height) + var(--space-lg));
+			align-self: start;
+		}
+	}
+</style>
