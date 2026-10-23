@@ -9,14 +9,63 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = getDictionary(lang);
+const home = getRelativeLocaleUrl(lang, '/');
+
+// Los ids de sección son iguales en ambos idiomas
+const links = [
+	{ id: 'about', label: t.nav.about },
+	{ id: 'experience', label: t.nav.experience },
+	{ id: 'projects', label: t.nav.projects },
+	{ id: 'skills', label: t.nav.skills },
+	{ id: 'contact', label: t.nav.contact },
+];
 ---
 
 <header class="header">
 	<div class="container header-inner">
-		<a class="logo mono" href={getRelativeLocaleUrl(lang, '/')} aria-label={t.a11y.home}>MDC</a>
+		<a class="logo mono" href={home} aria-label={t.a11y.home}>MDC</a>
+
+		<nav class="nav" aria-label={t.a11y.mainNav}>
+			<button class="menu-toggle mono" type="button" aria-expanded="false" aria-controls="nav-links">
+				<span class="menu-icon" aria-hidden="true"></span>
+				{t.nav.menu}
+			</button>
+			<ul id="nav-links" class="nav-links">
+				{
+					links.map((link) => (
+						<li>
+							<a href={`${home}#${link.id}`}>{link.label}</a>
+						</li>
+					))
+				}
+			</ul>
+		</nav>
+
 		<LanguageSwitcher lang={lang} />
 	</div>
 </header>
+
+<script>
+	// Menú móvil: sin JavaScript, los enlaces se muestran siempre en una fila desplazable
+	const header = document.querySelector('.header');
+	const toggle = header?.querySelector<HTMLButtonElement>('.menu-toggle');
+
+	if (header && toggle) {
+		const setOpen = (open: boolean) => {
+			toggle.setAttribute('aria-expanded', String(open));
+			header.classList.toggle('menu-open', open);
+		};
+
+		toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+		header.querySelectorAll('.nav-links a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape' && header.classList.contains('menu-open')) {
+				setOpen(false);
+				toggle.focus();
+			}
+		});
+	}
+</script>
 
 <style>
 	.header {
@@ -31,7 +80,7 @@ const t = getDictionary(lang);
 	.header-inner {
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
+		gap: var(--space-md);
 		height: var(--header-height);
 	}
 
@@ -45,5 +94,120 @@ const t = getDictionary(lang);
 
 	.logo:hover {
 		color: var(--color-accent);
+	}
+
+	.nav {
+		margin-left: auto;
+	}
+
+	.nav-links {
+		display: flex;
+		gap: var(--space-md);
+		list-style: none;
+		padding: 0;
+	}
+
+	.nav-links a {
+		color: var(--color-text-muted);
+		font-size: 0.9375rem;
+		text-decoration: none;
+		transition: color 0.2s var(--ease);
+	}
+
+	.nav-links a:hover {
+		color: var(--color-text);
+	}
+
+	.menu-toggle {
+		display: none;
+	}
+
+	@media (max-width: 47.99rem) {
+		/* Sin JS: fila de enlaces desplazable bajo la barra */
+		:global(html:not(.js)) .header .header-inner {
+			flex-wrap: wrap;
+			height: auto;
+			padding-block: 0.75rem;
+		}
+
+		:global(html:not(.js)) .header .nav {
+			order: 3;
+			width: 100%;
+			overflow-x: auto;
+		}
+
+		/* Con JS: botón que despliega el menú */
+		:global(.js) .menu-toggle {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.5rem;
+			min-height: 2.75rem;
+			padding: 0 0.25rem;
+			background: none;
+			border: 0;
+			color: var(--color-text);
+			cursor: pointer;
+		}
+
+		.menu-icon,
+		.menu-icon::before {
+			display: block;
+			width: 1rem;
+			height: 1.5px;
+			background: currentColor;
+			transition: transform 0.2s var(--ease);
+		}
+
+		.menu-icon {
+			position: relative;
+			transform: translateY(-3px);
+		}
+
+		.menu-icon::before {
+			content: '';
+			position: absolute;
+			top: 6px;
+		}
+
+		.menu-open .menu-icon {
+			transform: translateY(0) rotate(45deg);
+		}
+
+		.menu-open .menu-icon::before {
+			top: 0;
+			transform: rotate(-90deg);
+		}
+
+		:global(.js) .nav-links {
+			position: absolute;
+			top: 100%;
+			left: 0;
+			right: 0;
+			flex-direction: column;
+			gap: 0;
+			padding: var(--space-xs) var(--gutter) var(--space-md);
+			background: var(--color-bg);
+			border-bottom: 1px solid var(--color-border);
+			visibility: hidden;
+			opacity: 0;
+			transform: translateY(-0.5rem);
+			transition:
+				opacity 0.2s var(--ease),
+				transform 0.2s var(--ease),
+				visibility 0.2s;
+		}
+
+		.menu-open .nav-links {
+			visibility: visible;
+			opacity: 1;
+			transform: none;
+		}
+
+		:global(.js) .nav-links a {
+			display: block;
+			padding: 0.75rem 0;
+			font-size: 1.0625rem;
+			color: var(--color-text);
+		}
 	}
 </style>

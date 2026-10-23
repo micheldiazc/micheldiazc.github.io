@@ -1,69 +1,16 @@
 ---
 // Página de inicio compartida: la usan "/" (español) y "/en/" (inglés)
 import BaseLayout from '../layouts/BaseLayout.astro';
-import NodeLine from './NodeLine.astro';
-import { getDictionary, type Lang } from '../i18n/utils';
-import { profile } from '../data/profile';
+import Hero from './Hero.astro';
+import type { Lang } from '../i18n/utils';
 
 interface Props {
 	lang: Lang;
 }
 
 const { lang } = Astro.props;
-const t = getDictionary(lang);
 ---
 
 <BaseLayout lang={lang}>
-	<section class="hero">
-		<div class="container hero-inner">
-			<p class="role mono">{t.hero.role}</p>
-			<h1>{profile.name}</h1>
-			<p class="placeholder">{t.hero.headlineStart} {t.hero.headlineAccent} {t.hero.subheadline}</p>
-			<div class="motif">
-				<NodeLine nodes={3} />
-			</div>
-		</div>
-	</section>
+	<Hero lang={lang} />
 </BaseLayout>
-
-<style>
-	.hero {
-		/* Cuadrícula sutil, solo en la cabecera */
-		background-image:
-			linear-gradient(var(--color-grid) 1px, transparent 1px),
-			linear-gradient(90deg, var(--color-grid) 1px, transparent 1px);
-		background-size: 2rem 2rem;
-		background-position: center top;
-		border-bottom: 1px solid var(--color-border);
-	}
-
-	.hero-inner {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		gap: var(--space-sm);
-		min-height: calc(85vh - var(--header-height));
-		padding-block: var(--space-xl);
-	}
-
-	.role {
-		color: var(--color-accent);
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-	}
-
-	h1 {
-		font-size: clamp(2.5rem, 7vw, 4.75rem);
-	}
-
-	.placeholder {
-		max-width: 38rem;
-		color: var(--color-text-muted);
-		font-size: 1.125rem;
-	}
-
-	.motif {
-		max-width: 22rem;
-		margin-top: var(--space-md);
-	}
-</style>
