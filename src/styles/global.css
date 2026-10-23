@@ -1,0 +1,145 @@
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/inter-tight';
+@import '@fontsource-variable/jetbrains-mono';
+
+/* ── Tokens de diseño ─────────────────────────────────────────────
+   Todos los colores, fuentes y espacios del sitio salen de aquí.
+   Modo oscuro por defecto; el claro se activa si el dispositivo lo pide. */
+:root {
+	color-scheme: dark;
+
+	--color-bg: #131119;
+	--color-surface: #1a1722;
+	--color-grid: #1e1b27;
+	--color-border: #2c2838;
+	--color-text: #eceaf3;
+	--color-text-muted: #a9a4ba;
+	--color-accent: #b79cff;
+	--color-accent-soft: #b79cff26;
+
+	--font-body: 'Inter Variable', system-ui, sans-serif;
+	--font-display: 'Inter Tight Variable', 'Inter Variable', system-ui, sans-serif;
+	--font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
+
+	--space-xs: 0.5rem;
+	--space-sm: 1rem;
+	--space-md: 1.5rem;
+	--space-lg: 3rem;
+	--space-xl: 6rem;
+
+	--content-width: 68rem;
+	--gutter: clamp(1rem, 5vw, 2.5rem);
+	--header-height: 4rem;
+	--radius: 6px;
+	--ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@media (prefers-color-scheme: light) {
+	:root {
+		color-scheme: light;
+
+		--color-bg: #f7f6fa;
+		--color-surface: #ffffff;
+		--color-grid: #ebe8f1;
+		--color-border: #dcd8e5;
+		--color-text: #1c1a24;
+		--color-text-muted: #57536a;
+		--color-accent: #5b3fd1;
+		--color-accent-soft: #5b3fd11f;
+	}
+}
+
+/* ── Base ───────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+* {
+	margin: 0;
+}
+
+html {
+	-webkit-text-size-adjust: 100%;
+	scroll-padding-top: calc(var(--header-height) + var(--space-sm));
+}
+
+body {
+	min-height: 100vh;
+	background: var(--color-bg);
+	color: var(--color-text);
+	font-family: var(--font-body);
+	font-size: 1.0625rem;
+	line-height: 1.65;
+	-webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+	font-family: var(--font-display);
+	font-weight: 500;
+	line-height: 1.1;
+	letter-spacing: -0.02em;
+	text-wrap: balance;
+}
+
+p {
+	text-wrap: pretty;
+}
+
+a {
+	color: var(--color-accent);
+	text-underline-offset: 0.2em;
+}
+
+img,
+svg {
+	display: block;
+	max-width: 100%;
+}
+
+:focus-visible {
+	outline: 2px solid var(--color-accent);
+	outline-offset: 3px;
+	border-radius: 2px;
+}
+
+::selection {
+	background: var(--color-accent);
+	color: var(--color-bg);
+}
+
+/* ── Utilidades ─────────────────────────────────────────────────── */
+.container {
+	width: min(100% - 2 * var(--gutter), var(--content-width));
+	margin-inline: auto;
+}
+
+.mono {
+	font-family: var(--font-mono);
+	font-size: 0.8125rem;
+	letter-spacing: 0.02em;
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+/* Si el dispositivo pide reducir el movimiento, se desactivan transiciones */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}

@@ -1,0 +1,2 @@
+# Guarda todos los archivos de texto con finales de línea LF (formato estándar)
+* text=auto eol=lf

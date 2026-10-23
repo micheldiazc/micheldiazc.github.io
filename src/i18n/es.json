@@ -1,0 +1,21 @@
+{
+	"meta": {
+		"title": "Michel Díaz Cabrera · Backend & Integration Engineer",
+		"description": "Ingeniera de Software especializada en integración de APIs, middleware y bases de datos para banca."
+	},
+	"a11y": {
+		"skipToContent": "Saltar al contenido",
+		"home": "Inicio"
+	},
+	"language": {
+		"label": "Idioma",
+		"switchTo": "Ver en inglés",
+		"current": "ES",
+		"other": "EN"
+	},
+	"hero": {
+		"role": "Backend & Integration Engineer",
+		"name": "Michel Díaz Cabrera",
+		"placeholder": "Texto de prueba en español. El contenido real llega en la etapa 4."
+	}
+}

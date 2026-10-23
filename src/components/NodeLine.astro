@@ -1,0 +1,49 @@
+---
+// Motivo de identidad: nodos unidos por líneas, como sistemas conectados.
+// "nodes" es la cantidad de nodos; el del centro (o el indicado) va relleno.
+interface Props {
+	nodes?: number;
+	active?: number;
+}
+
+const { nodes = 3, active = Math.floor(nodes / 2) } = Astro.props;
+---
+
+<div class="node-line" aria-hidden="true">
+	{
+		Array.from({ length: nodes }, (_, i) => (
+			<>
+				{i > 0 && <span class="line" />}
+				<span class:list={['node', { active: i === active }]} />
+			</>
+		))
+	}
+</div>
+
+<style>
+	.node-line {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		width: 100%;
+	}
+
+	.line {
+		flex: 1;
+		height: 1px;
+		background: color-mix(in srgb, var(--color-accent) 40%, var(--color-border));
+	}
+
+	.node {
+		flex: none;
+		width: 0.5rem;
+		height: 0.5rem;
+		border-radius: 50%;
+		border: 1.5px solid var(--color-accent);
+	}
+
+	.node.active {
+		background: var(--color-accent);
+		box-shadow: 0 0 0 4px var(--color-accent-soft);
+	}
+</style>

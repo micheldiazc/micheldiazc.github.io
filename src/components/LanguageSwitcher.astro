@@ -1,0 +1,45 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { getDictionary, otherLang, pathWithoutLang, type Lang } from '../i18n/utils';
+
+interface Props {
+	lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = getDictionary(lang);
+const target = otherLang(lang);
+
+// Enlace a la misma página en el otro idioma (funciona sin JavaScript)
+const href = getRelativeLocaleUrl(target, pathWithoutLang(Astro.url.pathname));
+---
+
+<nav class="switcher mono" aria-label={t.language.label}>
+	<span class="current" aria-current="true">{t.language.current}</span>
+	<span class="divider" aria-hidden="true">/</span>
+	<a href={href} hreflang={target} lang={target} aria-label={t.language.switchTo}>{t.language.other}</a>
+</nav>
+
+<style>
+	.switcher {
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
+		color: var(--color-text-muted);
+	}
+
+	.current {
+		color: var(--color-text);
+	}
+
+	a {
+		color: var(--color-text-muted);
+		text-decoration: none;
+		padding: 0.5rem 0.25rem;
+		transition: color 0.2s var(--ease);
+	}
+
+	a:hover {
+		color: var(--color-accent);
+	}
+</style>
