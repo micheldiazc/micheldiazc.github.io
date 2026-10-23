@@ -1,0 +1,148 @@
+---
+import Section from './Section.astro';
+import { getDictionary, type Lang } from '../i18n/utils';
+import { techTags } from '../data/profile';
+
+interface Props {
+	lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = getDictionary(lang);
+const project = t.projects.davisart;
+---
+
+<Section id="projects" index="03" title={t.projects.title}>
+	<article class="case" aria-labelledby="davisart-title">
+		<header class="case-head">
+			<p class="meta mono">
+				<span class="status" aria-hidden="true"></span>
+				{project.meta}
+			</p>
+			<h3 id="davisart-title">
+				{project.name}
+				<span class="subtitle">{project.subtitle}</span>
+			</h3>
+			<p class="context">{project.context}</p>
+		</header>
+
+		<dl class="story">
+			<div>
+				<dt class="mono">{project.problemTitle}</dt>
+				<dd>{project.problem}</dd>
+			</div>
+			<div>
+				<dt class="mono">{project.workTitle}</dt>
+				<dd>{project.work}</dd>
+			</div>
+		</dl>
+
+		<div class="features">
+			<h4 class="mono">{project.featuresTitle}</h4>
+			<ul>
+				{project.features.map((feature) => <li>{feature}</li>)}
+			</ul>
+		</div>
+
+		<p class="tags mono">{techTags.davisart.join(' · ')}</p>
+	</article>
+</Section>
+
+<style>
+	.case {
+		display: grid;
+		gap: var(--space-lg);
+		max-width: 50rem;
+	}
+
+	.case-head {
+		display: grid;
+		gap: var(--space-sm);
+	}
+
+	.meta {
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
+		color: var(--color-text-muted);
+	}
+
+	/* Nodo relleno: el sistema está en uso */
+	.status {
+		width: 0.5rem;
+		height: 0.5rem;
+		border-radius: 50%;
+		background: var(--color-accent);
+		box-shadow: 0 0 0 4px var(--color-accent-soft);
+	}
+
+	h3 {
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+		font-size: clamp(2rem, 5vw, 3rem);
+	}
+
+	.subtitle {
+		font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+		color: var(--color-accent);
+		letter-spacing: -0.01em;
+	}
+
+	.context {
+		max-width: 40rem;
+		color: var(--color-text-muted);
+	}
+
+	.story {
+		display: grid;
+		gap: var(--space-md);
+		padding-block: var(--space-md);
+		border-block: 1px solid var(--color-border);
+	}
+
+	dt,
+	h4 {
+		margin-bottom: 0.5rem;
+		color: var(--color-accent);
+		font-weight: 400;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+	}
+
+	dd {
+		margin: 0;
+	}
+
+	.features ul {
+		display: grid;
+		gap: 0.6rem;
+		padding: 0;
+		list-style: none;
+		color: var(--color-text-muted);
+	}
+
+	.features li {
+		position: relative;
+		padding-left: 1.25rem;
+	}
+
+	.features li::before {
+		content: '—';
+		position: absolute;
+		left: 0;
+		color: var(--color-border);
+	}
+
+	.tags {
+		color: var(--color-accent);
+		line-height: 1.8;
+	}
+
+	@media (min-width: 48rem) {
+		.story {
+			grid-template-columns: 1fr 1fr;
+			gap: var(--space-lg);
+		}
+	}
+</style>
