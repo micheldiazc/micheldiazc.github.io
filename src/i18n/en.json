@@ -1,11 +1,12 @@
 {
 	"meta": {
 		"title": "Michel Díaz Cabrera · Backend & Integration Engineer",
-		"description": "Software Engineer specialized in API integration, middleware and databases for banking."
+		"description": "Software engineer in Caracas. API integration, middleware and databases for banking, and custom tools for businesses in Venezuela."
 	},
 	"a11y": {
 		"skipToContent": "Skip to content",
-		"home": "Home"
+		"home": "Home",
+		"mainNav": "Main navigation"
 	},
 	"language": {
 		"label": "Language",
@@ -13,9 +14,119 @@
 		"current": "EN",
 		"other": "ES"
 	},
+	"nav": {
+		"about": "About",
+		"experience": "Experience",
+		"projects": "Projects",
+		"skills": "Expertise",
+		"contact": "Contact"
+	},
 	"hero": {
 		"role": "Backend & Integration Engineer",
-		"name": "Michel Díaz Cabrera",
-		"placeholder": "Test text in English. The real content arrives in stage 4."
+		"headlineStart": "I connect systems that",
+		"headlineAccent": "move money.",
+		"subheadline": "APIs, middleware and databases for banking, and custom tools for businesses in Venezuela.",
+		"ctaEmail": "Email me",
+		"ctaLinkedin": "LinkedIn",
+		"location": "Caracas, Venezuela"
+	},
+	"about": {
+		"title": "About",
+		"paragraphs": [
+			"I'm a software engineer at Bancaribe. Since 2023 I've worked on the bank's integrations: I design REST APIs, manage them with WSO2 API Manager, administer services on Red Hat JBoss in the development and QA environments, and write the business logic that lives in the databases: SQL Server, Sybase and Oracle.",
+			"Before building software for banking, I spent eight years as a systems analyst at SIGIS. I gathered requirements, documented integrations, led user acceptance testing and resolved level 2 and 3 support issues. That time left me with a habit: understanding the business problem before proposing a technical solution."
+		],
+		"languages": "Spanish (native) · English (basic)"
+	},
+	"experience": {
+		"title": "Experience",
+		"bancaribe": {
+			"company": "Bancaribe",
+			"role": "Software Development Engineer · Integration Specialist",
+			"period": "May 2023 – Present",
+			"location": "Caracas",
+			"highlightTitle": "NFC mobile payments,",
+			"highlightText": "one of the first in Venezuela. I developed the database side of the backend, safeguarding the integrity and security of the new feature's data. I also led the testing, coordinated the vendors and took part in the project demo alongside the company driving it, through to launch.",
+			"bullets": [
+				"I design and build REST APIs that integrate heterogeneous banking platforms, published and managed with WSO2 API Manager and secured with OAuth2.",
+				"I develop and optimize SQL Server, Sybase and Oracle databases, with stored procedures for high-concurrency business logic.",
+				"I set up and maintain SSIS ETL processes that consolidate data across institutions.",
+				"I administer services on Red Hat JBoss in development and QA, and prepare the technical documentation for production releases.",
+				"I work with the mobile app and web services teams on integration testing ahead of each launch."
+			]
+		},
+		"sigis": {
+			"company": "SIGIS, Soluciones Integrales GIS",
+			"role": "Systems Analyst",
+			"period": "May 2015 – May 2023",
+			"location": "Caracas",
+			"summary": "I worked on the client side at a GIS (geographic information systems) software company, between users and the technical team.",
+			"bullets": [
+				"I analyzed issues reported by clients and followed them through to resolution as level 2 and 3 support.",
+				"I took part in the systems' development cycle: gathering requirements, doing functional analysis and writing integration manuals.",
+				"I led user acceptance testing (UAT)."
+			],
+			"tags": ["GIS software", "Functional analysis", "L2/L3 support", "UAT"]
+		}
+	},
+	"projects": {
+		"title": "Projects",
+		"davisart": {
+			"name": "Davisart",
+			"subtitle": "Quote management system",
+			"meta": "2026 · In use",
+			"context": "Built for Davisart, a printing and customization business (DTF, 3D printing and other services).",
+			"problemTitle": "The problem",
+			"problem": "Quotes were put together by hand, over WhatsApp and in phone notes. Converting to bolívares meant checking the rate on the Central Bank of Venezuela (BCV) website every time.",
+			"workTitle": "My work",
+			"work": "I designed and built it end to end, from the database to the interface. I chose Next.js deployed on Vercel, with Supabase (PostgreSQL) as the database, because of how well they work together.",
+			"featuresTitle": "What it does",
+			"features": [
+				"Quotes in tabs, with drafts saved automatically.",
+				"Official BCV exchange rates (US dollar and euro), fetched automatically or entered by hand, to convert each quote to bolívares with 16% VAT.",
+				"A catalog of base products, variants, categories and SKUs that keeps internal cost separate from sale price.",
+				"Status tracking for every quote: awaiting approval, approved and ready for production.",
+				"A dashboard with approved sales in dollars and bolívares."
+			]
+		}
+	},
+	"skills": {
+		"title": "Expertise",
+		"dailyTitle": "Daily",
+		"alsoTitle": "Also work with"
+	},
+	"education": {
+		"title": "Education",
+		"degrees": [
+			{
+				"title": "Computer Engineering",
+				"institution": "Universidad Alejandro de Humboldt",
+				"period": "2019 – 2025"
+			},
+			{
+				"title": "Associate degree (T.S.U.) in Computer Science",
+				"institution": "Instituto Universitario de Tecnología Venezuela",
+				"period": "2014 – 2018"
+			}
+		],
+		"coursesTitle": "Additional courses",
+		"courses": [
+			{ "name": "TypeScript course", "provider": "Código Facilito", "year": "2023" },
+			{ "name": "Introduction to Docker", "provider": "OpenWebinars", "year": "2023" },
+			{ "name": "Oracle Basics", "provider": "Educación IT", "year": "2021" }
+		]
+	},
+	"contact": {
+		"title": "Contact",
+		"headline": "Let's talk about what you need to connect.",
+		"text": "A project, an integration or an opening on your team: email me.",
+		"linkedin": "LinkedIn"
+	},
+	"footer": {
+		"copyright": "© 2026 Michel Díaz Cabrera"
+	},
+	"notFound": {
+		"title": "This page doesn't exist.",
+		"back": "Back to home"
 	}
 }

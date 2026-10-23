@@ -3,6 +3,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import NodeLine from './NodeLine.astro';
 import { getDictionary, type Lang } from '../i18n/utils';
+import { profile } from '../data/profile';
 
 interface Props {
 	lang: Lang;
@@ -16,8 +17,8 @@ const t = getDictionary(lang);
 	<section class="hero">
 		<div class="container hero-inner">
 			<p class="role mono">{t.hero.role}</p>
-			<h1>{t.hero.name}</h1>
-			<p class="placeholder">{t.hero.placeholder}</p>
+			<h1>{profile.name}</h1>
+			<p class="placeholder">{t.hero.headlineStart} {t.hero.headlineAccent} {t.hero.subheadline}</p>
 			<div class="motif">
 				<NodeLine nodes={3} />
 			</div>

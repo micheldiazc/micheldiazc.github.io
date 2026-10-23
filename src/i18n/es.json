@@ -1,11 +1,12 @@
 {
 	"meta": {
 		"title": "Michel Díaz Cabrera · Backend & Integration Engineer",
-		"description": "Ingeniera de Software especializada en integración de APIs, middleware y bases de datos para banca."
+		"description": "Ingeniera de software en Caracas. Integración de APIs, middleware y bases de datos para la banca, y herramientas a medida para negocios en Venezuela."
 	},
 	"a11y": {
 		"skipToContent": "Saltar al contenido",
-		"home": "Inicio"
+		"home": "Inicio",
+		"mainNav": "Navegación principal"
 	},
 	"language": {
 		"label": "Idioma",
@@ -13,9 +14,119 @@
 		"current": "ES",
 		"other": "EN"
 	},
+	"nav": {
+		"about": "Sobre mí",
+		"experience": "Experiencia",
+		"projects": "Proyectos",
+		"skills": "Especialidad",
+		"contact": "Contacto"
+	},
 	"hero": {
 		"role": "Backend & Integration Engineer",
-		"name": "Michel Díaz Cabrera",
-		"placeholder": "Texto de prueba en español. El contenido real llega en la etapa 4."
+		"headlineStart": "Conecto sistemas que",
+		"headlineAccent": "mueven dinero.",
+		"subheadline": "APIs, middleware y bases de datos para la banca, y herramientas a medida para negocios en Venezuela.",
+		"ctaEmail": "Escríbeme",
+		"ctaLinkedin": "LinkedIn",
+		"location": "Caracas, Venezuela"
+	},
+	"about": {
+		"title": "Sobre mí",
+		"paragraphs": [
+			"Soy ingeniera de software en Bancaribe. Desde 2023 trabajo en las integraciones del banco: diseño APIs REST, las gestiono con WSO2 API Manager, administro servicios en Red Hat JBoss en los entornos de desarrollo y QA, y escribo la lógica de negocio que vive en las bases de datos: SQL Server, Sybase y Oracle.",
+			"Antes de programar para la banca, pasé ocho años como analista de sistemas en SIGIS. Allí levantaba requerimientos, documentaba integraciones, dirigía pruebas de aceptación con usuarios y resolvía incidencias de segundo y tercer nivel. De esa etapa me quedó una costumbre: entender el problema del negocio antes de proponer la solución técnica."
+		],
+		"languages": "Español nativo · Inglés básico"
+	},
+	"experience": {
+		"title": "Experiencia",
+		"bancaribe": {
+			"company": "Bancaribe",
+			"role": "Ingeniera de Desarrollo de Software · Especialista en Integración",
+			"period": "May 2023 – Actualidad",
+			"location": "Caracas",
+			"highlightTitle": "Pago móvil con tecnología NFC,",
+			"highlightText": "uno de los primeros en Venezuela. Desarrollé el backend del lado de la base de datos, cuidando la integridad y la seguridad de los datos de la nueva funcionalidad. Además, lideré las pruebas, coordiné a los proveedores y participé en la demostración del proyecto junto a la empresa impulsora, hasta su lanzamiento.",
+			"bullets": [
+				"Diseño e implemento APIs REST para integrar plataformas bancarias heterogéneas, publicadas y gestionadas con WSO2 API Manager y protegidas con OAuth2.",
+				"Desarrollo y optimizo bases de datos en SQL Server, Sybase y Oracle, con stored procedures para lógica de negocio de alta concurrencia.",
+				"Configuro y mantengo procesos ETL con SSIS para consolidar datos entre instituciones.",
+				"Administro servicios en Red Hat JBoss en desarrollo y QA, y preparo la documentación técnica para los pases a producción.",
+				"Trabajo con los equipos de la app móvil y de webservices en las pruebas de integración previas a cada lanzamiento."
+			]
+		},
+		"sigis": {
+			"company": "SIGIS, Soluciones Integrales GIS",
+			"role": "Analista de Sistemas",
+			"period": "May 2015 – May 2023",
+			"location": "Caracas",
+			"summary": "Trabajé del lado del cliente en una empresa de soluciones de software GIS (sistemas de información geográfica), entre los usuarios y el equipo técnico.",
+			"bullets": [
+				"Analizaba los problemas que reportaban los clientes y les daba seguimiento hasta resolverlos, como soporte de nivel 2 y 3.",
+				"Participé en el ciclo de desarrollo de los sistemas: levantaba requerimientos, hacía el análisis funcional y elaboraba los manuales de integración.",
+				"Dirigía las pruebas de aceptación con usuarios (UAT)."
+			],
+			"tags": ["Software GIS", "Análisis funcional", "Soporte N2/N3", "UAT"]
+		}
+	},
+	"projects": {
+		"title": "Proyectos",
+		"davisart": {
+			"name": "Davisart",
+			"subtitle": "Sistema de gestión de presupuestos",
+			"meta": "2026 · En uso",
+			"context": "Desarrollado para Davisart, un emprendimiento de impresión y personalización (DTF, impresión 3D y otros servicios).",
+			"problemTitle": "El problema",
+			"problem": "Los presupuestos se hacían a mano, por WhatsApp y en las notas del teléfono. Para convertir a bolívares había que consultar la tasa en la página del BCV cada vez.",
+			"workTitle": "Mi trabajo",
+			"work": "Lo diseñé y desarrollé completo, de la base de datos a la interfaz. Elegí Next.js desplegado en Vercel, con Supabase (PostgreSQL) como base de datos, por lo bien que se integran entre sí.",
+			"featuresTitle": "Lo que hace el sistema",
+			"features": [
+				"Presupuestos en pestañas, con borradores que se guardan automáticamente.",
+				"Tasas oficiales del BCV (dólar y euro) obtenidas automáticamente o cargadas a mano, para convertir cada presupuesto a bolívares con IVA del 16 %.",
+				"Catálogo con productos base, variantes, categorías y SKU, que separa el costo interno del precio de venta.",
+				"Seguimiento de cada presupuesto: pendiente de aprobación, aprobado y listo para producción.",
+				"Un panel con las ventas aprobadas en dólares y en bolívares."
+			]
+		}
+	},
+	"skills": {
+		"title": "Especialidad",
+		"dailyTitle": "Uso a diario",
+		"alsoTitle": "También trabajo con"
+	},
+	"education": {
+		"title": "Formación",
+		"degrees": [
+			{
+				"title": "Ingeniería Informática",
+				"institution": "Universidad Alejandro de Humboldt",
+				"period": "2019 – 2025"
+			},
+			{
+				"title": "T.S.U. en Informática",
+				"institution": "Instituto Universitario de Tecnología Venezuela",
+				"period": "2014 – 2018"
+			}
+		],
+		"coursesTitle": "Cursos complementarios",
+		"courses": [
+			{ "name": "Curso de TypeScript", "provider": "Código Facilito", "year": "2023" },
+			{ "name": "Introducción a Docker", "provider": "OpenWebinars", "year": "2023" },
+			{ "name": "Oracle Básico", "provider": "Educación IT", "year": "2021" }
+		]
+	},
+	"contact": {
+		"title": "Contacto",
+		"headline": "Hablemos de lo que necesitas conectar.",
+		"text": "Un proyecto, una integración o una vacante en tu equipo: escríbeme.",
+		"linkedin": "LinkedIn"
+	},
+	"footer": {
+		"copyright": "© 2026 Michel Díaz Cabrera"
+	},
+	"notFound": {
+		"title": "Esta página no existe.",
+		"back": "Volver al inicio"
 	}
 }
