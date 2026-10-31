@@ -24,5 +24,12 @@ export const skills = {
 
 export const techTags = {
 	bancaribe: ['SQL Server', 'Sybase', 'Oracle', 'WSO2 API Manager', 'Red Hat JBoss', 'SSIS', 'OAuth2'],
-	davisart: ['Next.js', 'TypeScript', 'React', 'Supabase (PostgreSQL)', 'Vercel'],
+	cotiza: ['Next.js', 'TypeScript', 'Supabase', 'Vercel'],
+};
+
+export const projectLinks = {
+	cotiza: {
+		demo: 'https://cotiza-demo-iota.vercel.app/',
+		code: 'https://github.com/micheldiazc/cotiza',
+	},
 };

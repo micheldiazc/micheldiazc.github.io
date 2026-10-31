@@ -67,27 +67,36 @@
 				"Participé en el ciclo de desarrollo de los sistemas: levantaba requerimientos, hacía el análisis funcional y elaboraba los manuales de integración.",
 				"Dirigía las pruebas de aceptación con usuarios (UAT)."
 			],
-			"tags": ["Software GIS", "Análisis funcional", "Soporte N2/N3", "UAT"]
+			"tags": [
+				"Software GIS",
+				"Análisis funcional",
+				"Soporte N2/N3",
+				"UAT"
+			]
 		}
 	},
 	"projects": {
 		"title": "Proyectos",
-		"davisart": {
-			"name": "Davisart",
-			"subtitle": "Sistema de gestión de presupuestos",
-			"meta": "2026 · En uso",
-			"context": "Desarrollado para Davisart, un emprendimiento de impresión y personalización (DTF, impresión 3D y otros servicios).",
-			"problemTitle": "El problema",
-			"problem": "Los presupuestos se hacían a mano, por WhatsApp y en las notas del teléfono. Para convertir a bolívares había que consultar la tasa en la página del BCV cada vez.",
-			"workTitle": "Mi trabajo",
-			"work": "Lo diseñé y desarrollé completo, de la base de datos a la interfaz. Elegí Next.js desplegado en Vercel, con Supabase (PostgreSQL) como base de datos, por lo bien que se integran entre sí.",
-			"featuresTitle": "Lo que hace el sistema",
+		"cotiza": {
+			"name": "Cotiza",
+			"subtitle": "Gestor de presupuestos para pequeños negocios",
+			"meta": "2026 · Demo disponible",
+			"origin": "Nació en Davisart, un emprendimiento de impresión que hoy lo usa, y lo convertí en un producto para cualquier negocio.",
 			"features": [
-				"Presupuestos en pestañas, con borradores que se guardan automáticamente.",
-				"Tasas oficiales del BCV (dólar y euro) obtenidas automáticamente o cargadas a mano, para convertir cada presupuesto a bolívares con IVA del 16 %.",
-				"Catálogo con productos base, variantes, categorías y SKU, que separa el costo interno del precio de venta.",
-				"Seguimiento de cada presupuesto: pendiente de aprobación, aprobado y listo para producción.",
-				"Un panel con las ventas aprobadas en dólares y en bolívares."
+				"Clientes y catálogo",
+				"Presupuestos en PDF",
+				"Multimoneda con tasa BCV"
+			],
+			"imageAlt": "Panel de control de la demo de Cotiza: ventas aceptadas, presupuestos emitidos y pendientes, tasa de aceptación, gráfico de ventas de los últimos seis meses y lista de últimos presupuestos.",
+			"demo": "Ver la demo",
+			"code": "Código en GitHub",
+			"newTab": "(se abre en otra pestaña)",
+			"techTitle": "Detalles técnicos",
+			"tech": [
+				"Datos aislados por negocio con Row Level Security en PostgreSQL.",
+				"Guardado atómico de cada presupuesto.",
+				"Demo que funciona en el navegador, sin servidor.",
+				"66 pruebas automáticas."
 			]
 		}
 	},
@@ -112,9 +121,21 @@
 		],
 		"coursesTitle": "Cursos complementarios",
 		"courses": [
-			{ "name": "Curso de TypeScript", "provider": "Código Facilito", "year": "2023" },
-			{ "name": "Introducción a Docker", "provider": "OpenWebinars", "year": "2023" },
-			{ "name": "Oracle Básico", "provider": "Educación IT", "year": "2021" }
+			{
+				"name": "Curso de TypeScript",
+				"provider": "Código Facilito",
+				"year": "2023"
+			},
+			{
+				"name": "Introducción a Docker",
+				"provider": "OpenWebinars",
+				"year": "2023"
+			},
+			{
+				"name": "Oracle Básico",
+				"provider": "Educación IT",
+				"year": "2021"
+			}
 		]
 	},
 	"contact": {

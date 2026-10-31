@@ -67,27 +67,36 @@
 				"I took part in the systems' development cycle: gathering requirements, doing functional analysis and writing integration manuals.",
 				"I led user acceptance testing (UAT)."
 			],
-			"tags": ["GIS software", "Functional analysis", "L2/L3 support", "UAT"]
+			"tags": [
+				"GIS software",
+				"Functional analysis",
+				"L2/L3 support",
+				"UAT"
+			]
 		}
 	},
 	"projects": {
 		"title": "Projects",
-		"davisart": {
-			"name": "Davisart",
-			"subtitle": "Quote management system",
-			"meta": "2026 · In use",
-			"context": "Built for Davisart, a printing and customization business (DTF, 3D printing and other services).",
-			"problemTitle": "The problem",
-			"problem": "Quotes were put together by hand, over WhatsApp and in phone notes. Converting to bolívares meant checking the rate on the Central Bank of Venezuela (BCV) website every time.",
-			"workTitle": "My work",
-			"work": "I designed and built it end to end, from the database to the interface. I chose Next.js deployed on Vercel, with Supabase (PostgreSQL) as the database, because of how well they work together.",
-			"featuresTitle": "What it does",
+		"cotiza": {
+			"name": "Cotiza",
+			"subtitle": "Quote manager for small businesses",
+			"meta": "2026 · Live demo",
+			"origin": "It started at Davisart, a printing business that uses it today, and I turned it into a product for any business.",
 			"features": [
-				"Quotes in tabs, with drafts saved automatically.",
-				"Official BCV exchange rates (US dollar and euro), fetched automatically or entered by hand, to convert each quote to bolívares with 16% VAT.",
-				"A catalog of base products, variants, categories and SKUs that keeps internal cost separate from sale price.",
-				"Status tracking for every quote: awaiting approval, approved and ready for production.",
-				"A dashboard with approved sales in dollars and bolívares."
+				"Clients and catalog",
+				"PDF quotes",
+				"Multi-currency with BCV rate"
+			],
+			"imageAlt": "Cotiza demo dashboard: accepted sales, issued and pending quotes, acceptance rate, a six-month sales chart and a list of recent quotes.",
+			"demo": "View the demo",
+			"code": "Code on GitHub",
+			"newTab": "(opens in a new tab)",
+			"techTitle": "Technical details",
+			"tech": [
+				"Data isolated per business with Row Level Security in PostgreSQL.",
+				"Atomic saving of each quote.",
+				"A demo that runs in the browser, with no server.",
+				"66 automated tests."
 			]
 		}
 	},
@@ -112,9 +121,21 @@
 		],
 		"coursesTitle": "Additional courses",
 		"courses": [
-			{ "name": "TypeScript course", "provider": "Código Facilito", "year": "2023" },
-			{ "name": "Introduction to Docker", "provider": "OpenWebinars", "year": "2023" },
-			{ "name": "Oracle Basics", "provider": "Educación IT", "year": "2021" }
+			{
+				"name": "TypeScript course",
+				"provider": "Código Facilito",
+				"year": "2023"
+			},
+			{
+				"name": "Introduction to Docker",
+				"provider": "OpenWebinars",
+				"year": "2023"
+			},
+			{
+				"name": "Oracle Basics",
+				"provider": "Educación IT",
+				"year": "2021"
+			}
 		]
 	},
 	"contact": {

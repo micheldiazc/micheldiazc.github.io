@@ -1,7 +1,9 @@
 ---
+import { Image } from 'astro:assets';
 import Section from './Section.astro';
 import { getDictionary, type Lang } from '../i18n/utils';
-import { techTags } from '../data/profile';
+import { techTags, projectLinks } from '../data/profile';
+import cotizaPanel from '../assets/cotiza-panel.png';
 
 interface Props {
 	lang: Lang;
@@ -9,49 +11,64 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = getDictionary(lang);
-const project = t.projects.davisart;
+const project = t.projects.cotiza;
+const links = projectLinks.cotiza;
 ---
 
 <Section id="projects" index="03" title={t.projects.title}>
-	<article class="case" aria-labelledby="davisart-title">
+	<article class="case" aria-labelledby="cotiza-title">
 		<header class="case-head">
 			<p class="meta mono">
 				<span class="status" aria-hidden="true"></span>
 				{project.meta}
 			</p>
-			<h3 id="davisart-title">
+			<h3 id="cotiza-title">
 				{project.name}
 				<span class="subtitle">{project.subtitle}</span>
 			</h3>
-			<p class="context">{project.context}</p>
+			<p class="origin">{project.origin}</p>
 		</header>
 
-		<dl class="story">
-			<div>
-				<dt class="mono">{project.problemTitle}</dt>
-				<dd>{project.problem}</dd>
-			</div>
-			<div>
-				<dt class="mono">{project.workTitle}</dt>
-				<dd>{project.work}</dd>
-			</div>
-		</dl>
+		<a class="shot" href={links.demo} target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
+			<Image
+				src={cotizaPanel}
+				alt=""
+				widths={[640, 960, 1280, 2560]}
+				sizes="(min-width: 60rem) 50rem, 100vw"
+				loading="lazy"
+			/>
+		</a>
+		<p class="visually-hidden">{project.imageAlt}</p>
 
-		<div class="features">
-			<h4 class="mono">{project.featuresTitle}</h4>
-			<ul>
-				{project.features.map((feature) => <li>{feature}</li>)}
-			</ul>
+		<ul class="features mono">
+			{project.features.map((feature) => <li>{feature}</li>)}
+		</ul>
+
+		<div class="actions">
+			<a class="button primary" href={links.demo} target="_blank" rel="noopener noreferrer">
+				{project.demo} <span aria-hidden="true">↗</span>
+				<span class="visually-hidden">{project.newTab}</span>
+			</a>
+			<a class="button" href={links.code} target="_blank" rel="noopener noreferrer">
+				{project.code} <span aria-hidden="true">↗</span>
+				<span class="visually-hidden">{project.newTab}</span>
+			</a>
 		</div>
 
-		<p class="tags mono">{techTags.davisart.join(' · ')}</p>
+		<details class="tech">
+			<summary class="mono">{project.techTitle}</summary>
+			<ul>
+				{project.tech.map((item) => <li>{item}</li>)}
+			</ul>
+			<p class="tags mono">{techTags.cotiza.join(' · ')}</p>
+		</details>
 	</article>
 </Section>
 
 <style>
 	.case {
 		display: grid;
-		gap: var(--space-lg);
+		gap: var(--space-md);
 		max-width: 50rem;
 	}
 
@@ -67,7 +84,7 @@ const project = t.projects.davisart;
 		color: var(--color-text-muted);
 	}
 
-	/* Nodo relleno: el sistema está en uso */
+	/* Nodo relleno: hay una demo en línea */
 	.status {
 		width: 0.5rem;
 		height: 0.5rem;
@@ -89,45 +106,138 @@ const project = t.projects.davisart;
 		letter-spacing: -0.01em;
 	}
 
-	.context {
+	.origin {
 		max-width: 40rem;
 		color: var(--color-text-muted);
 	}
 
-	.story {
-		display: grid;
-		gap: var(--space-md);
-		padding-block: var(--space-md);
-		border-block: 1px solid var(--color-border);
+	/* La captura enmarcada como una ventana, con un leve realce al pasar el ratón */
+	.shot {
+		display: block;
+		border: 1px solid var(--color-border);
+		border-radius: 10px;
+		overflow: hidden;
+		transition:
+			border-color 0.2s var(--ease),
+			transform 0.3s var(--ease);
 	}
 
-	dt,
-	h4 {
-		margin-bottom: 0.5rem;
+	.shot:hover {
+		border-color: var(--color-accent);
+		transform: translateY(-2px);
+	}
+
+	.shot :global(img) {
+		width: 100%;
+		height: auto;
+	}
+
+	.features {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem 1.25rem;
+		padding: 0;
+		list-style: none;
+		color: var(--color-text);
+	}
+
+	.features li {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.features li::before {
+		content: '';
+		width: 0.375rem;
+		height: 0.375rem;
+		border-radius: 50%;
+		border: 1.5px solid var(--color-accent);
+	}
+
+	.actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+	}
+
+	.button {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		min-height: 2.75rem;
+		padding: 0 1.25rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		color: var(--color-text);
+		font-weight: 500;
+		font-size: 0.9375rem;
+		text-decoration: none;
+		transition:
+			border-color 0.2s var(--ease),
+			background-color 0.2s var(--ease);
+	}
+
+	.button:hover {
+		border-color: var(--color-accent);
+	}
+
+	.button.primary {
+		background: var(--color-accent);
+		border-color: var(--color-accent);
+		color: var(--color-bg);
+	}
+
+	.button.primary:hover {
+		background: color-mix(in srgb, var(--color-accent) 85%, var(--color-text));
+	}
+
+	/* Desplegable para quien quiera el detalle técnico */
+	.tech {
+		border-top: 1px solid var(--color-border);
+		padding-top: var(--space-sm);
+	}
+
+	.tech summary {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		min-height: 2.75rem;
 		color: var(--color-accent);
-		font-weight: 400;
 		text-transform: uppercase;
 		letter-spacing: 0.1em;
+		cursor: pointer;
+		list-style: none;
 	}
 
-	dd {
-		margin: 0;
+	.tech summary::-webkit-details-marker {
+		display: none;
 	}
 
-	.features ul {
+	.tech summary::before {
+		content: '▸';
+		transition: transform 0.2s var(--ease);
+	}
+
+	.tech[open] summary::before {
+		transform: rotate(90deg);
+	}
+
+	.tech ul {
 		display: grid;
-		gap: 0.6rem;
+		gap: 0.5rem;
+		margin-top: var(--space-xs);
 		padding: 0;
 		list-style: none;
 		color: var(--color-text-muted);
 	}
 
-	.features li {
+	.tech li {
 		position: relative;
 		padding-left: 1.25rem;
 	}
 
-	.features li::before {
+	.tech li::before {
 		content: '—';
 		position: absolute;
 		left: 0;
@@ -135,14 +245,7 @@ const project = t.projects.davisart;
 	}
 
 	.tags {
+		margin-top: var(--space-sm);
 		color: var(--color-accent);
-		line-height: 1.8;
-	}
-
-	@media (min-width: 48rem) {
-		.story {
-			grid-template-columns: 1fr 1fr;
-			gap: var(--space-lg);
-		}
 	}
 </style>
