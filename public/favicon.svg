@@ -1,8 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-	<!-- Tres nodos conectados: el motivo del sitio -->
-	<rect width="32" height="32" rx="7" fill="#131119"/>
-	<path d="M7 16h18" stroke="#6c5aa3" stroke-width="2"/>
-	<circle cx="7" cy="16" r="3" fill="#131119" stroke="#b79cff" stroke-width="2"/>
-	<circle cx="25" cy="16" r="3" fill="#131119" stroke="#b79cff" stroke-width="2"/>
-	<circle cx="16" cy="16" r="4.5" fill="#b79cff"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Versión simplificada para tamaños pequeños (favicon, iconos) -->
+  <rect width="64" height="64" rx="14" fill="#131119"/>
+  <polyline points="14,48 14,16 32,37 50,16 50,48" fill="none" stroke="#b79cff" stroke-width="6.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="50" cy="48" r="8" fill="#b79cff"/>
 </svg>

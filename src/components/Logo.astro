@@ -1,0 +1,45 @@
+---
+// Logo personal: la M dibujada con nodos conectados; el último nodo va relleno.
+// Toma los colores de los tokens, así se adapta solo al modo claro y oscuro.
+interface Props {
+	size?: number;
+}
+
+const { size = 28 } = Astro.props;
+const nodes = [
+	[12, 50],
+	[12, 14],
+	[32, 38],
+	[52, 14],
+];
+---
+
+<svg class="logo-mark" width={size} height={size} viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+	<polyline points="12,50 12,14 32,38 52,14 52,50" class="path" />
+	{nodes.map(([cx, cy]) => <circle cx={cx} cy={cy} r="5.5" class="node" />)}
+	<circle cx="52" cy="50" r="7.5" class="end" />
+</svg>
+
+<style>
+	.logo-mark {
+		display: block;
+		flex: none;
+	}
+
+	.path {
+		fill: none;
+		stroke: color-mix(in srgb, var(--color-accent) 55%, var(--color-bg));
+		stroke-width: 3;
+		stroke-linejoin: round;
+	}
+
+	.node {
+		fill: var(--color-bg);
+		stroke: var(--color-accent);
+		stroke-width: 3;
+	}
+
+	.end {
+		fill: var(--color-accent);
+	}
+</style>
